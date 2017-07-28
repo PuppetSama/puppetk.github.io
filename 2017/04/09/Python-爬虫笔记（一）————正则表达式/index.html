@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Blog Of PuppetSama"><title>Python 爬虫笔记（一）————正则表达式 | PuppetHut</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Python 爬虫笔记（一）————正则表达式</h1><a id="logo" href="/.">PuppetHut</a><p class="description">Where you can not see</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Python 爬虫笔记（一）————正则表达式</h1><div class="post-meta">Apr 9, 2017<span> | </span><span class="category"><a href="/categories/Code/">Code</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#序"><span class="toc-number">1.</span> <span class="toc-text">序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式语法"><span class="toc-number">2.</span> <span class="toc-text">正则表达式语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式修饰符-可选标志"><span class="toc-number">2.1.</span> <span class="toc-text">正则表达式修饰符 - 可选标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式模式"><span class="toc-number">2.2.</span> <span class="toc-text">正则表达式模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的正则表达式处理函数"><span class="toc-number">3.</span> <span class="toc-text">常用的正则表达式处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#re-match"><span class="toc-number">3.1.</span> <span class="toc-text">re.match</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-search"><span class="toc-number">3.2.</span> <span class="toc-text">re.search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-findall"><span class="toc-number">3.3.</span> <span class="toc-text">re.findall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-sub"><span class="toc-number">3.4.</span> <span class="toc-text">re.sub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-split"><span class="toc-number">3.5.</span> <span class="toc-text">re.split</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re-compile"><span class="toc-number">3.6.</span> <span class="toc-text">re.compile</span></a></li></ol></li></ol></div></div><div class="post-content"><h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>最近发现自己在编程方面始终是知其然，而不知其所以然，于是决定重新认真学习一遍。本篇文章意在于自我查阅，如果能够帮到他人真是幸事。</p>
+<p>这里将会整理一下Python的re模块，即正则表达式的用法。</p>
+<a id="more"></a>
+<h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符。模式描述在搜索文本时要匹配的一个或多个字符串。</p>
+<h3 id="正则表达式修饰符-可选标志"><a href="#正则表达式修饰符-可选标志" class="headerlink" title="正则表达式修饰符 - 可选标志"></a>正则表达式修饰符 - 可选标志</h3><p>正则表达式可以包含一些可选标志修饰符来控制匹配的模式。修饰符被指定为一个可选的标志。多个标志可以通过按位 OR(|) 它们来指定。如 re.I | re.M 被设置成 I 和 M 标志：</p>
+<table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>re.I</td>
+<td>使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td>re.L</td>
+<td>做本地化识别（locale-aware）匹配</td>
+</tr>
+<tr>
+<td>re.M</td>
+<td>多行匹配，影响 ^ 和 $</td>
+</tr>
+<tr>
+<td>re.S</td>
+<td>使 . 匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td>re.U</td>
+<td>根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B.</td>
+</tr>
+<tr>
+<td>re.X</td>
+<td>该标志通过给予你更灵活的格式以便你将正则表达式写得更易于理解。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h3><p>模式字符串使用特殊的语法来表示一个正则表达式：</p>
+<p>字母和数字表示他们自身。一个正则表达式模式中的字母和数字匹配同样的字符串。</p>
+<p>多数字母和数字前加一个反斜杠时会拥有不同的含义。</p>
+<p>标点符号只有被转义时才匹配自身，否则它们表示特殊的含义。</p>
+<p>反斜杠本身需要使用反斜杠转义。</p>
+<p>由于正则表达式通常都包含反斜杠，所以你最好使用原始字符串来表示它们。模式元素(如 r’/t’，等价于’//t’)匹配相应的特殊字符。</p>
+<p>下表列出了正则表达式模式语法中的特殊元素。如果你使用模式的同时提供了可选的标志参数，某些模式元素的含义会改变。</p>
+<table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>匹配字符串的开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的末尾。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。</td>
+</tr>
+<tr>
+<td>[…]</td>
+<td>用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
+</tr>
+<tr>
+<td>[^…]</td>
+<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
+</tr>
+<tr>
+<td>re*</td>
+<td>匹配0个或多个的表达式。</td>
+</tr>
+<tr>
+<td>re+</td>
+<td>匹配1个或多个的表达式。</td>
+</tr>
+<tr>
+<td>re?</td>
+<td>匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
+</tr>
+<tr>
+<td>re{ n}</td>
+<td></td>
+</tr>
+<tr>
+<td>re{ n,}</td>
+<td>精确匹配n个前面表达式。</td>
+</tr>
+<tr>
+<td>re{ n, m}</td>
+<td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
+</tr>
+<tr>
+<td>a&brvbar;b</td>
+<td>匹配a或b</td>
+</tr>
+<tr>
+<td>(re)</td>
+<td>G匹配括号内的表达式，也表示一个组</td>
+</tr>
+<tr>
+<td>(?imx)</td>
+<td>正则表达式包含三种可选标志：i, m, 或 x 。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td>(?-imx)</td>
+<td>正则表达式关闭 i, m, 或 x 可选标志。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td>(?: re)</td>
+<td>类似 (…), 但是不表示一个组</td>
+</tr>
+<tr>
+<td>(?imx: re)</td>
+<td>在括号中使用i, m, 或 x 可选标志</td>
+</tr>
+<tr>
+<td>(?-imx: re)</td>
+<td>在括号中不使用i, m, 或 x 可选标志</td>
+</tr>
+<tr>
+<td>(?#…)</td>
+<td>注释.</td>
+</tr>
+<tr>
+<td>(?= re)</td>
+<td>前向肯定界定符。如果所含正则表达式，以 … 表示，在当前位置成功匹配时成功，否则失败。但一旦所含表达式已经尝试，匹配引擎根本没有提高；模式的剩余部分还要尝试界定符的右边。</td>
+</tr>
+<tr>
+<td>(?! re)</td>
+<td>前向否定界定符。与肯定界定符相反；当所含表达式不能在字符串当前位置匹配时成功</td>
+</tr>
+<tr>
+<td>(?&gt; re)</td>
+<td>匹配的独立模式，省去回溯。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母数字及下划线</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母数字及下划线</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意空白字符，等价于 [\t\n\r\f].</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意非空字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配任意数字，等价于 [0-9].</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意非数字</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>匹配字符串开始</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串。</td>
+</tr>
+<tr>
+<td>\z</td>
+<td>匹配字符串结束</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>匹配最后匹配完成的位置。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td>\n, \t, 等.</td>
+<td>匹配一个换行符。匹配一个制表符。等</td>
+</tr>
+<tr>
+<td>\1…\9</td>
+<td>匹配第n个分组的子表达式。</td>
+</tr>
+<tr>
+<td>\10</td>
+<td>匹配第n个分组的子表达式，如果它经匹配。否则指的是八进制字符码的表达式。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用的正则表达式处理函数"><a href="#常用的正则表达式处理函数" class="headerlink" title="常用的正则表达式处理函数"></a>常用的正则表达式处理函数</h2><h3 id="re-match"><a href="#re-match" class="headerlink" title="re.match"></a>re.match</h3><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<p><strong>函数语法：</strong></p>
+<pre><code>re.match(pattern, string, flags=0)
+</code></pre><p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody>
+</table>
+<p>匹配成功re.match方法返回一个匹配的对象，否则返回None。</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">name=<span class="string">"Hello,My name is kuangl,nice to meet you..."</span></div><div class="line">k=re.match(<span class="string">r"(\H....)"</span>,name)</div><div class="line"><span class="keyword">if</span> k:</div><div class="line">     <span class="keyword">print</span> k.group(<span class="number">0</span>),<span class="string">'\n'</span>,k.group(<span class="number">1</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"Sorry,not match!"</span></div></pre></td></tr></table></figure>
+<p>以上实例执行结果如下：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Hello</span></div><div class="line">Hello</div></pre></td></tr></table></figure>
+<h3 id="re-search"><a href="#re-search" class="headerlink" title="re.search"></a>re.search</h3><p>re.search 扫描整个字符串并返回第一个成功的匹配。</p>
+<p><strong>函数语法：</strong></p>
+<pre><code>re.search(pattern, string, flags=0)
+</code></pre><p>函数参数说明：</p>
+<p>如上</p>
+<p>匹配成功re.search方法返回一个匹配的对象，否则返回None。</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">name=<span class="string">"Hello,My name is kuangl,nice to meet you..."</span></div><div class="line">k=re.search(<span class="string">r'k(uan)gl'</span>,name)</div><div class="line"><span class="keyword">if</span> k:</div><div class="line">    <span class="keyword">print</span> k.group(<span class="number">0</span>),k.group(<span class="number">1</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"Sorry,not search!"</span></div></pre></td></tr></table></figure>
+<p>以上实例执行结果如下：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">kuangl uan</span></div></pre></td></tr></table></figure>
+<h3 id="re-findall"><a href="#re-findall" class="headerlink" title="re.findall"></a>re.findall</h3><p>re.findall 在目标字符串查找符合规则的字符串。</p>
+<p><strong>函数语法：</strong></p>
+<pre><code>re.findall(pattern, string, flags=0)
+</code></pre><p>函数参数说明：</p>
+<p>如上</p>
+<p>匹配成功re.findall方法返回由匹配的对象组成的列表，否则返回None。</p>
+<p>实例：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mail=<span class="string">'&lt;user01@mail.com&gt; &lt;user02@mail.com&gt; user04@mail.com'</span></div><div class="line">re.findall(<span class="string">r'(\w+@m....[a-z]&#123;3&#125;)'</span>,mail)</div></pre></td></tr></table></figure>
+<p>以上实例执行结果如下：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="symbol">'user01@mail.com</span>', <span class="symbol">'user02@mail.com</span>', <span class="symbol">'user04@mail.com</span>']</div></pre></td></tr></table></figure>
+<h3 id="re-sub"><a href="#re-sub" class="headerlink" title="re.sub"></a>re.sub</h3><p>re.sub 用于替换字符串的匹配项。</p>
+<p><strong>函数语法：</strong></p>
+<pre><code>re.sub(pattern, repl, string, count=0)
+</code></pre><p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>repl</td>
+<td>替换后的字符串。</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>count</td>
+<td>替换个数。默认为0，表示每个匹配项都替换。</td>
+</tr>
+</tbody>
+</table>
+<p>替换成功re.sub方法返回一个替换后的对象，否则返回原字符串。</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">phone = <span class="string">"2004-959-559 # 这是一个国外电话号码"</span></div><div class="line"></div><div class="line">num = re.sub(<span class="string">r'#.*$'</span>, <span class="string">""</span>, phone)</div><div class="line"><span class="keyword">print</span> <span class="string">"电话号码是: "</span>, num</div><div class="line"></div><div class="line">num = re.sub(<span class="string">r'\D'</span>, <span class="string">""</span>, phone)</div><div class="line"><span class="keyword">print</span> <span class="string">"电话号码是 : "</span>, num</div><div class="line"></div><div class="line">num = re.sub(<span class="string">r'3'</span>, <span class="string">""</span>, phone)</div><div class="line"><span class="keyword">print</span> <span class="string">"电话号码是 : "</span>, num</div></pre></td></tr></table></figure>
+<p>以上实例执行结果如下：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">电话号码是:  2004<span class="string">-959</span><span class="string">-559</span> </div><div class="line">电话号码是 :  2004959559</div><div class="line">电话号码是 :  2004<span class="string">-959</span><span class="string">-559</span> # 这是一个国外电话号码</div></pre></td></tr></table></figure>
+<h3 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h3><p>re.split 用于来分割字符串。</p>
+<p><strong>函数语法：</strong></p>
+<pre><code>re.split(pattern, string, maxsplit=0)
+</code></pre><p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>count</td>
+<td>最大分割字符串，默认为0，表示每个匹配项都分割。</td>
+</tr>
+</tbody>
+</table>
+<p>分割成功re.split方法返回一个分割后的对象组成的列表，否则返回由原字符串组成的列表。</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">test=<span class="string">"Hi, nice to meet you where are you from?"</span></div><div class="line"></div><div class="line">a = re.split(<span class="string">r"\s+"</span>,test)</div><div class="line">print(a)</div><div class="line"></div><div class="line">a = re.split(<span class="string">r"\s+"</span>,test,<span class="number">3</span>)</div><div class="line">print(a)</div><div class="line"></div><div class="line">a = re.split(<span class="string">r"|"</span>,test,<span class="number">3</span>)</div><div class="line">print(a)</div></pre></td></tr></table></figure>
+<p>以上实例执行结果如下：</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="symbol">'Hi</span>,', <span class="symbol">'nice</span>', <span class="symbol">'to</span>', <span class="symbol">'meet</span>', <span class="symbol">'you</span>', <span class="symbol">'where</span>', <span class="symbol">'are</span>', <span class="symbol">'you</span>', <span class="symbol">'from?</span>']</div><div class="line">[<span class="symbol">'Hi</span>,', <span class="symbol">'nice</span>', <span class="symbol">'to</span>', <span class="symbol">'meet</span> you where are you from?']</div><div class="line">[<span class="symbol">'Hi</span>, nice to meet you where are you from?']</div></pre></td></tr></table></figure>
+<h3 id="re-compile"><a href="#re-compile" class="headerlink" title="re.compile"></a>re.compile</h3><p>re.compile 可以把正则表达式编译成一个正则对象。</p>
+<p><strong>函数语法：</strong></p>
+<pre><code>re.compile(pattern, flags=0)
+</code></pre><p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody>
+</table>
+<p>re.compile方法返回一个正则对象。</p>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">test=<span class="string">"Hi, nice to meet you where are you from?"</span></div><div class="line">k=re.compile(<span class="string">r'\w*o\w*'</span>) <span class="comment">#匹配带o的字符串</span></div><div class="line"><span class="keyword">print</span> k.findall(test)     <span class="comment">#显示所有包涵o的字符串</span></div><div class="line"><span class="keyword">print</span> k.sub(<span class="keyword">lambda</span> m: <span class="string">'['</span> + m.group(<span class="number">0</span>) + <span class="string">']'</span>,test)  <span class="comment"># 将字符串中含有o的单词用[]括起来</span></div></pre></td></tr></table></figure>
+<p>以上实例执行结果如下：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'to'</span>, <span class="string">'you'</span>, <span class="string">'you'</span>, <span class="string">'from'</span>]</div><div class="line"><span class="symbol">Hi</span>, nice [to] meet [you] where are [you] [from]?</div></pre></td></tr></table></figure>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://puppetkant.cn/2017/04/09/Python-爬虫笔记（一）————正则表达式/" data-id="cj5gd19q10001egud8n8euyph" class="article-share-link">分享</a><div class="tags"><a href="/tags/Python/">Python</a></div><div class="post-nav"><a href="/2017/04/11/Python-爬虫笔记（二）——编码转换与错误处理/" class="pre">Python 爬虫笔记（二）——编码转换与错误处理</a><a href="/2017/03/19/Android爬坑问题集合/" class="next">Android爬坑问题集合</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://puppetkant.cn"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/mc/" style="font-size: 15px;">mc</a> <a href="/tags/Others/" style="font-size: 15px;">Others</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/28/思考的独立性/">思考的独立性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/09/Python-爬虫笔记（三）——对于Lambda的认识/">Python 爬虫笔记（三）——对于Lambda的认识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/Python-爬虫笔记（二）——编码转换与错误处理/">Python 爬虫笔记（二）——编码转换与错误处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/Python-爬虫笔记（一）————正则表达式/">Python 爬虫笔记（一）————正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/Android爬坑问题集合/">Android爬坑问题集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/CentOS7-MC服务器搭建爬坑指南/">CentOS7 MC服务器搭建爬坑指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/happy-new-year/">happy-new-year</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">PuppetHut.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
