@@ -4,6 +4,50 @@
   
     
     <entry>
+      <title><![CDATA[国内携程一日航线Python实现]]></title>
+      <url>http://puppetkant.cn/2017/08/01/%E5%9B%BD%E5%86%85%E6%90%BA%E7%A8%8B%E4%B8%80%E6%97%A5%E8%88%AA%E7%BA%BFPython%E5%AE%9E%E7%8E%B0/</url>
+      <content type="html"><![CDATA[<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>这是一个简单的小项目，可以用一句话来简单概括：</p>
+<p><strong>爬取携程</strong>当日航班信息<strong>绘制</strong>在<strong>国内地图</strong>上。</p>
+<a id="more"></a>
+<h2 id="爬取信息"><a href="#爬取信息" class="headerlink" title="爬取信息"></a>爬取信息</h2><p>这里我采用的是Scrapy框架+Selenium动态爬取。</p>
+<p>并没有什么可以需要注意的地方，不过有一点需要提醒一下。当使用chromedriver时，若是报错</p>
+<blockquote>
+<p>chromedriver executable needs to be in PATH</p>
+</blockquote>
+<p>可以采用以下三种方法解决：</p>
+<ul>
+<li><p>在环境变量中加入chromedriver位置</p>
+</li>
+<li><p>将代码改为</p>
+</li>
+</ul>
+<p><code>driver = webdriver.Chrome(&#39;C:/path/to/chromedriver.exe&#39;)</code></p>
+<ul>
+<li>将chromedriver放置于目标位置，Linux为<code>/usr/bin/</code>，Windows为<code>PythonXX/Scripts/</code></li>
+</ul>
+<h2 id="绘制地图"><a href="#绘制地图" class="headerlink" title="绘制地图"></a>绘制地图</h2><p>绘制地图使用的是Basemap包，而Basemap基于2.7，即正常情况下无法使用。<br>通过<a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">Python Extension Packages for Windows</a>可得到基于Py3的Basemap Package。</p>
+<p>为了得到中国省份边界，可以通过<a href="http://www.gadm.org/" target="_blank" rel="external">GADM</a>获取数据，然后通过readshapefile()方法加载数据。</p>
+<h2 id="绘制航线"><a href="#绘制航线" class="headerlink" title="绘制航线"></a>绘制航线</h2><p>将地点与经纬度以字典方式传入<code>{&#39;city&#39;，[lon， lat]}</code>,根据获得数据用drawgreatcircle()进行绘制。</p>
+<p>最后得到目标图片：</p>
+<p><img src="http://omjz7so35.bkt.clouddn.com/OF_FFSB%295%5DTK$E34%602S6%29FU.png" alt="AirLine"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Code </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[思考的独立性]]></title>
       <url>http://puppetkant.cn/2017/06/28/%E6%80%9D%E8%80%83%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7/</url>
       <content type="html"><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>最近一直在思考一个比较有趣的问题，这个问题就是“怎么保证自己的思想是独立的”，这样说或许有些太过空大，那么从小的方面来讲，“你所认为的真的是你所认为的么？”</p>
@@ -45,7 +89,7 @@
 <p>举个例子，将一个<code>list</code>里的每个元素都进行平方：</p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">map</span>（<span class="built_in">lambda</span> x:x*x, [y <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</div></pre></td></tr></table></figure>
 <p>可以看出，<code>lambda x:x*x</code>实际上是：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span></span>:</div><div class="line">    <span class="keyword">return</span> x*x</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span></span><span class="symbol">:</span></div><div class="line">    <span class="keyword">return</span> x*x</div></pre></td></tr></table></figure>
 <p>然而，和其他很多语言相比，Python 的 lambda 限制多多，最严重的当属它只能由一条表达式组成。这个限制主要是为了防止滥用，因为当人们发觉 lambda 很方便，就比较容易滥用，可是用多了会让程序看起来不那么清晰，毕竟每个人对于抽象层级的忍耐 / 理解程度都有所不同。</p>
 <h2 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a>Closure</h2><blockquote>
 <p>A closure—unlike a plain function pointer —allows a function to access those non-local variables even when invoked outside of its immediate lexical scope.</p>
@@ -403,7 +447,7 @@
 <p>实例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">name=<span class="string">"Hello,My name is kuangl,nice to meet you..."</span></div><div class="line">k=re.match(<span class="string">r"(\H....)"</span>,name)</div><div class="line"><span class="keyword">if</span> k:</div><div class="line">     <span class="keyword">print</span> k.group(<span class="number">0</span>),<span class="string">'\n'</span>,k.group(<span class="number">1</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"Sorry,not match!"</span></div></pre></td></tr></table></figure>
 <p>以上实例执行结果如下：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Hello</span></div><div class="line">Hello</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Hello</span></div><div class="line"><span class="attribute">Hello</span></div></pre></td></tr></table></figure>
 <h3 id="re-search"><a href="#re-search" class="headerlink" title="re.search"></a>re.search</h3><p>re.search 扫描整个字符串并返回第一个成功的匹配。</p>
 <p><strong>函数语法：</strong></p>
 <pre><code>re.search(pattern, string, flags=0)
