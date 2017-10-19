@@ -4,6 +4,42 @@
   
     
     <entry>
+      <title><![CDATA[数字杭电模拟登录]]></title>
+      <url>http://puppetkant.cn/2017/10/19/%E6%95%B0%E5%AD%97%E6%9D%AD%E7%94%B5%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/</url>
+      <content type="html"><![CDATA[<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>这是一个简单的小项目，可以用一句话来简单概括：</p>
+<p><strong>模拟登录</strong>数字杭电并<strong>爬取个人成绩</strong>。</p>
+<a id="more"></a>
+<h2 id="模拟登录"><a href="#模拟登录" class="headerlink" title="模拟登录"></a>模拟登录</h2><p>采用urllib包进行数据爬取，http.cookiejar进行cookie保存。</p>
+<p>需要注意除了账号和加密后的密码，我们还需要传一个lt值。</p>
+<pre><code>def getLt():
+    getLtURL = &apos;http://cas.hdu.edu.cn/cas/login?service=http://i.hdu.edu.cn/dcp/index.jsp&apos;
+    request = urllib.request.Request(getLtURL)
+    response = urllib.request.urlopen(request)
+    getLtContent = response.read().decode(&apos;utf-8&apos;)
+    getLt = re.search(r&apos;value=&quot;(LT-.*?)&quot;&apos;,getLtContent)
+return getLt.group(1)
+</code></pre><p>同时还有一个ST值在页面跳转的时候需要使用。</p>
+<h2 id="爬取个人成绩"><a href="#爬取个人成绩" class="headerlink" title="爬取个人成绩"></a>爬取个人成绩</h2><p>只需要简单的正则匹配就可以了，这个就不多复述了。</p>
+<p>最后放上我的代码：<del>因为是随手之作，所以格式混乱，请领会精神</del></p>
+<p><a href="https://github.com/PuppetSama/hdu_credit_spider" target="_blank" rel="external">模拟登录数字杭电代码</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Code </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Python爬坑问题集合]]></title>
       <url>http://puppetkant.cn/2017/09/07/Python%E7%88%AC%E5%9D%91%E9%97%AE%E9%A2%98%E9%9B%86%E5%90%88/</url>
       <content type="html"><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>本文用于一些常见奇葩问题，致力于记录在 Python 开发过程中出现的各类问题。<br><a id="more"></a></p>

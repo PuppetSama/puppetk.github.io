@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2017-09-07T05:17:54.606Z</updated>
+  <updated>2017-10-19T11:50:49.088Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数字杭电模拟登录</title>
+    <link href="http://puppetkant.cn/2017/10/19/%E6%95%B0%E5%AD%97%E6%9D%AD%E7%94%B5%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/"/>
+    <id>http://puppetkant.cn/2017/10/19/数字杭电模拟登录/</id>
+    <published>2017-10-19T11:30:24.000Z</published>
+    <updated>2017-10-19T11:50:49.088Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>这是一个简单的小项目，可以用一句话来简单概括：</p>
+<p><strong>模拟登录</strong>数字杭电并<strong>爬取个人成绩</strong>。</p>
+<a id="more"></a>
+<h2 id="模拟登录"><a href="#模拟登录" class="headerlink" title="模拟登录"></a>模拟登录</h2><p>采用urllib包进行数据爬取，http.cookiejar进行cookie保存。</p>
+<p>需要注意除了账号和加密后的密码，我们还需要传一个lt值。</p>
+<pre><code>def getLt():
+    getLtURL = &apos;http://cas.hdu.edu.cn/cas/login?service=http://i.hdu.edu.cn/dcp/index.jsp&apos;
+    request = urllib.request.Request(getLtURL)
+    response = urllib.request.urlopen(request)
+    getLtContent = response.read().decode(&apos;utf-8&apos;)
+    getLt = re.search(r&apos;value=&quot;(LT-.*?)&quot;&apos;,getLtContent)
+return getLt.group(1)
+</code></pre><p>同时还有一个ST值在页面跳转的时候需要使用。</p>
+<h2 id="爬取个人成绩"><a href="#爬取个人成绩" class="headerlink" title="爬取个人成绩"></a>爬取个人成绩</h2><p>只需要简单的正则匹配就可以了，这个就不多复述了。</p>
+<p>最后放上我的代码：<del>因为是随手之作，所以格式混乱，请领会精神</del></p>
+<p><a href="https://github.com/PuppetSama/hdu_credit_spider" target="_blank" rel="external">模拟登录数字杭电代码</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;项目介绍&quot;&gt;&lt;a href=&quot;#项目介绍&quot; class=&quot;headerlink&quot; title=&quot;项目介绍&quot;&gt;&lt;/a&gt;项目介绍&lt;/h2&gt;&lt;p&gt;这是一个简单的小项目，可以用一句话来简单概括：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模拟登录&lt;/strong&gt;数字杭电并&lt;strong&gt;爬取个人成绩&lt;/strong&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://puppetkant.cn/categories/Code/"/>
+    
+    
+      <category term="Python" scheme="http://puppetkant.cn/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python爬坑问题集合</title>
