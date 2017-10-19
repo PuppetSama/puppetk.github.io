@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2017-10-19T11:55:08.453Z</updated>
+  <updated>2017-10-19T11:56:11.044Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://puppetkant.cn/2017/10/19/%E6%95%B0%E5%AD%97%E6%9D%AD%E7%94%B5%E6%A8%A1%E6%8B%9F%E7%99%BB%E5%BD%95/"/>
     <id>http://puppetkant.cn/2017/10/19/数字杭电模拟登录/</id>
     <published>2017-10-19T11:30:24.000Z</published>
-    <updated>2017-10-19T11:55:08.453Z</updated>
+    <updated>2017-10-19T11:56:11.044Z</updated>
     
     <content type="html"><![CDATA[<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>这是一个简单的小项目，可以用一句话来简单概括：</p>
 <p><strong>模拟登录</strong>数字杭电并<strong>爬取个人成绩</strong>。</p>
 <a id="more"></a>
 <h2 id="模拟登录"><a href="#模拟登录" class="headerlink" title="模拟登录"></a>模拟登录</h2><p>采用urllib包进行数据爬取，http.cookiejar进行cookie保存。</p>
-<p>需要注意除了账号和加密后的密码，我们还需要传一个lt值。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLt</span><span class="params">()</span>:</span></div><div class="line">   etLtURL = <span class="string">'http://cas.hdu.edu.cn/cas/login?service=http://i.hdu.edu.cn/dcp/index.jsp'</span></div><div class="line">   request = urllib.request.Request(getLtURL)</div><div class="line">    response = urllib.request.urlopen(request)</div><div class="line">    getLtContent = response.read().decode(<span class="string">'utf-8'</span>)</div><div class="line">    getLt = re.search(<span class="string">r'value="(LT-.*?)"'</span>,getLtContent)</div><div class="line"><span class="keyword">return</span> getLt.group(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<p>需要注意除了账号和加密后的密码，我们还需要传一个lt值。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLt</span><span class="params">()</span>:</span></div><div class="line">    getLtURL = <span class="string">'http://cas.hdu.edu.cn/cas/login?service=http://i.hdu.edu.cn/dcp/index.jsp'</span></div><div class="line">    request = urllib.request.Request(getLtURL)</div><div class="line">    response = urllib.request.urlopen(request)</div><div class="line">    getLtContent = response.read().decode(<span class="string">'utf-8'</span>)</div><div class="line">    getLt = re.search(<span class="string">r'value="(LT-.*?)"'</span>,getLtContent)</div><div class="line"><span class="keyword">return</span> getLt.group(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
 <p>同时还有一个ST值在页面跳转的时候需要使用。</p>
 <h2 id="爬取个人成绩"><a href="#爬取个人成绩" class="headerlink" title="爬取个人成绩"></a>爬取个人成绩</h2><p>只需要简单的正则匹配就可以了，这个就不多复述了。</p>
 <p>最后放上我的代码：<del>因为是随手之作，所以格式混乱，请领会精神</del></p>
