@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2017-10-19T11:56:11.044Z</updated>
+  <updated>2017-10-20T01:12:05.413Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python动态爬取的两种方式</title>
+    <link href="http://puppetkant.cn/2017/10/20/Python%E5%8A%A8%E6%80%81%E7%88%AC%E5%8F%96%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://puppetkant.cn/2017/10/20/Python动态爬取的两种方式/</id>
+    <published>2017-10-20T00:38:11.000Z</published>
+    <updated>2017-10-20T01:12:05.413Z</updated>
+    
+    <content type="html"><![CDATA[<p>在不断爬取网站的同时，我们会发现有一些页面是动态生成的，无法简单的通过之前的做法获取的所需要的信息。所以我们需要新的爬取解析方式，目前流行的两大思路是<strong>模拟浏览器行为爬取</strong>和<strong>动态页面逆向分析爬取</strong>。</p>
+<a id="more"></a>
+<h2 id="模拟浏览器行为爬取"><a href="#模拟浏览器行为爬取" class="headerlink" title="模拟浏览器行为爬取"></a>模拟浏览器行为爬取</h2><p>模拟浏览器行为爬取是最简单的方法，适用性也最广。</p>
+<h3 id="Selenium与webdriver方式"><a href="#Selenium与webdriver方式" class="headerlink" title="Selenium与webdriver方式"></a>Selenium与webdriver方式</h3><p>这是最广泛的动态爬取方式之一，原因是简单无脑，然而效率感人，非常慢。其中webdriver主要使用PhantomJS，这是基于Webkit的无界面浏览器，能够在不可见的情况下完成浏览器的常用功能。</p>
+<p>在使用过程中，如非熟练操作，请认真查阅<a href="http://selenium-python-zh.readthedocs.io/en/latest/index.html" target="_blank" rel="external">Selenium文档</a>和<a href="http://phantomjs.org/" target="_blank" rel="external">PhantomJS文档</a>。个人并不建议这种方式，不过如果是小范围的数据爬取可以尝试，比如爬取Instagram特定人物的图片或者<a href="http://puppetkant.cn/2017/08/01/%E5%9B%BD%E5%86%85%E6%90%BA%E7%A8%8B%E4%B8%80%E6%97%A5%E8%88%AA%E7%BA%BFPython%E5%AE%9E%E7%8E%B0/">爬取携程一日航班信息</a>。</p>
+<h3 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h3><p>除了以上所说的Selenium方式，还有Splash、PyV8、Ghost、execjs等，用法大同小异，只是写法有差异而已，参考查阅官方文档都可以简单应有，这里就不过多复述了。</p>
+<h2 id="动态页面逆向分析爬取"><a href="#动态页面逆向分析爬取" class="headerlink" title="动态页面逆向分析爬取"></a>动态页面逆向分析爬取</h2><blockquote>
+<p>任何动态产生的内容，要么是本地计算，要么是从服务器获取的。</p>
+<p>前者看js，后者抓包。</p>
+</blockquote>
+<p>爬虫爬取动态页面效率最高的是分析出请求数据的URL<del>熟练运用F12便可以解决</del>，在这里推荐一下网站分析工具<a href="https://www.charlesproxy.com/" target="_blank" rel="external">Charles</a>。</p>
+<p>推荐大家可以以<a href="http://www.jianshu.com/search?q=%E6%89%8B%E5%B8%90&amp;page=1&amp;type=note" target="_blank" rel="external">简书的搜索页面</a>和<a href="https://www.bilibili.com/video/av15512174/" target="_blank" rel="external">BiliBili的视频信息页面</a>入手，十分简单易上手。具体代码就不贴了。<del>才不是因为懒</del></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在不断爬取网站的同时，我们会发现有一些页面是动态生成的，无法简单的通过之前的做法获取的所需要的信息。所以我们需要新的爬取解析方式，目前流行的两大思路是&lt;strong&gt;模拟浏览器行为爬取&lt;/strong&gt;和&lt;strong&gt;动态页面逆向分析爬取&lt;/strong&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Code" scheme="http://puppetkant.cn/categories/Code/"/>
+    
+    
+      <category term="Python" scheme="http://puppetkant.cn/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>数字杭电模拟登录</title>
