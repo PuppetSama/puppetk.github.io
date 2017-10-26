@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2017-10-26T02:45:32.477Z</updated>
+  <updated>2017-10-26T03:03:50.844Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,12 +20,25 @@
     <link href="http://puppetkant.cn/2017/10/26/%E7%9B%AE%E6%A0%87%E7%88%AC%E8%99%AB%E6%B8%85%E5%8D%95/"/>
     <id>http://puppetkant.cn/2017/10/26/目标爬虫清单/</id>
     <published>2017-10-26T02:45:32.000Z</published>
-    <updated>2017-10-26T02:45:32.477Z</updated>
+    <updated>2017-10-26T03:03:50.844Z</updated>
+    
+    <content type="html"><![CDATA[<p>想了想决定，把想要爬的网站都汇总起来，一方面是这样更方便清晰，另一方面也是督促自己每天都编程。</p>
+<p>完成后会顺带写上关键点和一些心得。</p>
+<p><em>先定个小目标，爬他100个</em><br><a id="more"></a></p>
+<h2 id="网易云音乐的音乐"><a href="#网易云音乐的音乐" class="headerlink" title="网易云音乐的音乐"></a>网易云音乐的音乐</h2><h2 id="花瓣采集的图片"><a href="#花瓣采集的图片" class="headerlink" title="花瓣采集的图片"></a>花瓣采集的图片</h2><h2 id="instagram的图片"><a href="#instagram的图片" class="headerlink" title="instagram的图片"></a>instagram的图片</h2><h2 id="维基百科编辑ip分布地图"><a href="#维基百科编辑ip分布地图" class="headerlink" title="维基百科编辑ip分布地图"></a>维基百科编辑ip分布地图</h2><h2 id="微博情绪地图"><a href="#微博情绪地图" class="headerlink" title="微博情绪地图"></a>微博情绪地图</h2>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;想了想决定，把想要爬的网站都汇总起来，一方面是这样更方便清晰，另一方面也是督促自己每天都编程。&lt;/p&gt;
+&lt;p&gt;完成后会顺带写上关键点和一些心得。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;先定个小目标，爬他100个&lt;/em&gt;&lt;br&gt;
+    
     </summary>
     
+      <category term="Code" scheme="http://puppetkant.cn/categories/Code/"/>
+    
+    
+      <category term="Python" scheme="http://puppetkant.cn/tags/Python/"/>
     
   </entry>
   
