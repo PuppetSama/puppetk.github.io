@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2017-10-20T01:12:05.413Z</updated>
+  <updated>2017-10-26T02:45:32.477Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>目标爬虫清单</title>
+    <link href="http://puppetkant.cn/2017/10/26/%E7%9B%AE%E6%A0%87%E7%88%AC%E8%99%AB%E6%B8%85%E5%8D%95/"/>
+    <id>http://puppetkant.cn/2017/10/26/目标爬虫清单/</id>
+    <published>2017-10-26T02:45:32.000Z</published>
+    <updated>2017-10-26T02:45:32.477Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Python动态爬取的两种方式</title>

@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[目标爬虫清单]]></title>
+      <url>http://puppetkant.cn/2017/10/26/%E7%9B%AE%E6%A0%87%E7%88%AC%E8%99%AB%E6%B8%85%E5%8D%95/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Python动态爬取的两种方式]]></title>
       <url>http://puppetkant.cn/2017/10/20/Python%E5%8A%A8%E6%80%81%E7%88%AC%E5%8F%96%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>在不断爬取网站的同时，我们会发现有一些页面是动态生成的，无法简单的通过之前的做法获取的所需要的信息。所以我们需要新的爬取解析方式，目前流行的两大思路是<strong>模拟浏览器行为爬取</strong>和<strong>动态页面逆向分析爬取</strong>。</p>
