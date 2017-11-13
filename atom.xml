@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2017-11-13T06:17:29.820Z</updated>
+  <updated>2017-11-13T06:20:59.930Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -16,93 +16,82 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>目标爬虫清单</title>
     <link href="http://puppetkant.cn/2017/10/26/%E7%9B%AE%E6%A0%87%E7%88%AC%E8%99%AB%E6%B8%85%E5%8D%95/"/>
     <id>http://puppetkant.cn/2017/10/26/目标爬虫清单/</id>
-    <published>2017-10-26T02:45:32.475Z</published>
-    <updated>2017-11-13T06:17:29.820Z</updated>
+    <published>2017-10-26T02:45:32.000Z</published>
+    <updated>2017-11-13T06:20:59.930Z</updated>
     
-    <content type="html"><![CDATA[<p>class DoubannovelSpiderMiddleware(HttpProxyMiddleware):</p>
-<pre><code># Not all methods need to be defined. If a method is not defined,
-# scrapy acts as if the spider middleware does not modify the
-# passed objects.
-
-def __init__(self, auth_encoding=&apos;latin-1&apos;, proxy_list_file=None):
-    if not proxy_list_file:
-        raise NotConfigured
-    self.auth_encoding = auth_encoding
-    # 分别用两个列表维护HTTP和HTTPS的代理
-    self.proxies = defaultdict(list)
-
-    # 从json文件中读取代理服务器信息，填入self.proxies
-    with open(proxy_list_file) as f:
-        proxy_list = json.load(f)
-        for proxy in proxy_list:
-            scheme = proxy[&apos;proxy_scheme&apos;]
-            url = proxy[&apos;proxy&apos;]
-            self.proxies[scheme].append(self._get_proxy(url,scheme))
-
-
-@classmethod
-def from_crawler(cls, crawler):
-    # 从配置文件中读取用户验证信息编码
-    auth_encoding = crawler.settings.get(&apos;HTTPPROXY_AUTH_ENCODING&apos;, &apos;latin-1&apos;)
-    # 从配置文件中读取代理服务器列表文件(json)的路径
-    proxy_list_file = crawler.settings.get(&apos;HTTPPROXY_PROXY_LIST_FILE&apos;)
-
-    return cls(auth_encoding, proxy_list_file)
-
-def process_spider_input(self, response, spider):
-    # Called for each response that goes through the spider
-    # middleware and into the spider.
-
-    # Should return None or raise an exception.
-    return None
-
-def process_spider_output(self, response, result, spider):
-    # Called with the results returned from the Spider, after
-    # it has processed the response.
-
-    # Must return an iterable of Request, dict or Item objects.
-    for i in result:
-        yield i
-
-def process_spider_exception(self, response, exception, spider):
-    # Called when a spider or process_spider_input() method
-    # (from other spider middleware) raises an exception.
-
-    # Should return either None or an iterable of Response, dict
-    # or Item objects.
-    pass
-
-def process_start_requests(self, start_requests, spider):
-    # Called with the start requests of the spider, and works
-    # similarly to the process_spider_output() method, except
-    # that it doesn’t have a response associated.
-
-    # Must return only requests (not items).
-    for r in start_requests:
-        yield r
-
-def spider_opened(self, spider):
-    spider.logger.info(&apos;Spider opened: %s&apos; % spider.name)
-
-def _set_proxy(self, request, scheme):
-    # 随机选择一个代理
-    creds, proxy = random.choice(self.proxies[scheme])
-    request.meta[&apos;proxy&apos;] = proxy
-    if creds:
-        request.headers[&apos;Proxy-Authorization&apos;] = b&apos;Basic&apos; + creds
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>想了想决定，把想要爬的网站都汇总起来，一方面是这样更方便清晰，另一方面也是督促自己每天都编程。</p>
+<p>完成后会顺带写上关键点和一些心得。</p>
+<p><em>先定个小目标，爬他100个</em><br><a id="more"></a></p>
+<h2 id="网易云音乐的音乐"><a href="#网易云音乐的音乐" class="headerlink" title="网易云音乐的音乐"></a>网易云音乐的音乐</h2><h2 id="花瓣采集的图片"><a href="#花瓣采集的图片" class="headerlink" title="花瓣采集的图片"></a>花瓣采集的图片</h2><h2 id="instagram的图片"><a href="#instagram的图片" class="headerlink" title="instagram的图片"></a>instagram的图片</h2><h3 id="直接爬取"><a href="#直接爬取" class="headerlink" title="直接爬取"></a>直接爬取</h3><p>最简单的爬取方式大概就是直接爬取了，单纯使用request方法就可以拿到目标信息，不需要添加头文件也不需要进行模拟登录，甚至动态加载的部分都可以通过instagram的更多的herf进行跳转从而避开抓包步骤。但是考虑到效率问题，只适用于较少链接的爬取，发帖数应当少于200。</p>
+<p><a href="https://github.com/PuppetSama/InstagramSpider/blob/master/directIns.py" target="_blank" rel="external">示例代码</a></p>
+<h2 id="维基百科编辑ip分布地图"><a href="#维基百科编辑ip分布地图" class="headerlink" title="维基百科编辑ip分布地图"></a>维基百科编辑ip分布地图</h2><h2 id="微博情绪地图"><a href="#微博情绪地图" class="headerlink" title="微博情绪地图"></a>微博情绪地图</h2><h2 id="拉勾网实习搜索"><a href="#拉勾网实习搜索" class="headerlink" title="拉勾网实习搜索"></a>拉勾网实习搜索</h2><h2 id="matplotlib示例代码下载"><a href="#matplotlib示例代码下载" class="headerlink" title="matplotlib示例代码下载"></a>matplotlib示例代码下载</h2><h3 id="项目说明"><a href="#项目说明" class="headerlink" title="项目说明"></a>项目说明</h3><p>采用scrapy框架可以快速下载，使用FilesPipeline(可以看作是特殊的下载器，通过item的一个特殊字段将目标文件的url传递给它，就可以自动下载，并将下载结果信息存入item的另一个字段，方便查阅)。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>FilesPipeline</strong></th>
+<th><strong>ImagesPipeline</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>导入路径</td>
+<td>scrapy.pipelines.files.FilesPipeline</td>
+<td>secrapy.pipeline.images.ImagesPipeline</td>
+</tr>
+<tr>
+<td>Item字段</td>
+<td>file_urls,files</td>
+<td>image_urls,images</td>
+</tr>
+<tr>
+<td>下载目录</td>
+<td>FILE_STORE</td>
+<td>IMAGES_STORE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="页面分析"><a href="#页面分析" class="headerlink" title="页面分析"></a>页面分析</h3><ul>
+<li>使用scrapy shell来下载目标界面,然后调用view函数在浏览器查看。</li>
+<li>发现例子页面链接，使用LinkExtractor提取所有例子页面链接。</li>
+<li>分析例子页面，使用fetch函数进入下载第一个例子页面，调用view函数查看。</li>
+<li>分析下载地址，完成。</li>
+</ul>
+<h3 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h3><ul>
+<li>创建Scrapy项目。</li>
+<li>在配置文件启用FilesPipeline，指定下载目录。</li>
+<li>实现Item。</li>
+<li>实现Spider。</li>
+</ul>
+<p>下载完成后，发现文件名为一串数字，这些数字是下载文件url的sha1散列值。这种命名方式可以防止重名文件相互覆盖，但并不直观。</p>
+<p>实现一个FilesPipeline的子类，覆写file_path方法来实现期望的文件命名规则。</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="title">from</span> scrapy.pipelines.files <span class="keyword">import</span> FilesPipeline</div><div class="line"><span class="title">from</span> urllib.parse <span class="keyword">import</span> urlparse</div><div class="line"><span class="title">from</span> os.path <span class="keyword">import</span> basename, dirname, join</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="type">MatpoltlibexamplePipeline</span>(<span class="type">FilesPipeline</span>):</span></div><div class="line"><span class="class">    def file_path(<span class="title">self</span>, <span class="title">request</span>, <span class="title">response</span>=<span class="type">None</span>, <span class="title">info</span>=<span class="type">None</span>):</span></div><div class="line"><span class="class">    	path=urlparse(<span class="title">request</span>.<span class="title">url</span>).path</span></div><div class="line"><span class="class">    	return join(<span class="title">basename</span>(<span class="title">dirname</span>(<span class="title">path</span>)), basename(<span class="title">path</span>))</span></div></pre></td></tr></table></figure>
+<h2 id="杭电图书馆图书"><a href="#杭电图书馆图书" class="headerlink" title="杭电图书馆图书"></a>杭电图书馆图书</h2><h2 id="豆瓣阅读热门标签"><a href="#豆瓣阅读热门标签" class="headerlink" title="豆瓣阅读热门标签"></a>豆瓣阅读热门标签</h2><h3 id="项目说明-1"><a href="#项目说明-1" class="headerlink" title="项目说明"></a>项目说明</h3><p>爬取<a href="https://book.douban.com/tag/?view=cloud" target="_blank" rel="external">豆瓣阅读所有热门标签</a>下的书籍名称，评分和评价人数。</p>
+<p>这个项目的起因是有朋友需要对豆瓣阅读的信息进行数据挖掘，刚好自己没什么事情就随手写了，具体实现并不困难。</p>
+<h3 id="值得学习"><a href="#值得学习" class="headerlink" title="值得学习"></a>值得学习</h3><h4 id="utf8格式存储json"><a href="#utf8格式存储json" class="headerlink" title="utf8格式存储json"></a>utf8格式存储json</h4><p>代码如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoubannovelPipeline</span>(<span class="title">object</span>):</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></div><div class="line">		<span class="keyword">self</span>.file = codecs.open(<span class="string">'douban_novel_utf8.json'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>)</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(<span class="keyword">self</span>, item, spider)</span></span><span class="symbol">:</span></div><div class="line">		line = json.dumps(dict(item), ensure_ascii=False) + <span class="string">"\n"</span></div><div class="line">		<span class="keyword">self</span>.file.write(line)</div><div class="line">		<span class="keyword">return</span> item</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">spider_closed</span><span class="params">(<span class="keyword">self</span>, spider)</span></span><span class="symbol">:</span></div><div class="line">		<span class="keyword">self</span>.file.close()</div></pre></td></tr></table></figure></p>
+<h4 id="随机选择代理"><a href="#随机选择代理" class="headerlink" title="随机选择代理"></a>随机选择代理</h4><p>代码如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoubannovelSpiderMiddleware</span>(<span class="title">HttpProxyMiddleware</span>):</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, auth_encoding=<span class="string">'latin-1'</span>, proxy_list_file=None)</span></span><span class="symbol">:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="symbol">proxy_list_file:</span></div><div class="line">            raise NotConfigured</div><div class="line">        <span class="keyword">self</span>.auth_encoding = auth_encoding</div><div class="line">        <span class="comment"># 分别用两个列表维护HTTP和HTTPS的代理</span></div><div class="line">        <span class="keyword">self</span>.proxies = defaultdict(list)</div><div class="line"></div><div class="line">        <span class="comment"># 从json文件中读取代理服务器信息，填入self.proxies</span></div><div class="line">        with open(proxy_list_file) as <span class="symbol">f:</span></div><div class="line">            proxy_list = json.load(f)</div><div class="line">            <span class="keyword">for</span> proxy <span class="keyword">in</span> <span class="symbol">proxy_list:</span></div><div class="line">                scheme = proxy[<span class="string">'proxy_scheme'</span>]</div><div class="line">                url = proxy[<span class="string">'proxy'</span>]</div><div class="line">                <span class="keyword">self</span>.proxies[scheme].append(<span class="keyword">self</span>._get_proxy(url,scheme))</div><div class="line"></div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">from_crawler</span><span class="params">(cls, crawler)</span></span><span class="symbol">:</span></div><div class="line">        <span class="comment"># 从配置文件中读取用户验证信息编码</span></div><div class="line">        auth_encoding = crawler.settings.get(<span class="string">'HTTPPROXY_AUTH_ENCODING'</span>, <span class="string">'latin-1'</span>)</div><div class="line">        <span class="comment"># 从配置文件中读取代理服务器列表文件(json)的路径</span></div><div class="line">        proxy_list_file = crawler.settings.get(<span class="string">'HTTPPROXY_PROXY_LIST_FILE'</span>)</div><div class="line"></div><div class="line">        <span class="keyword">return</span> cls(auth_encoding, proxy_list_file)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spider_opened</span><span class="params">(<span class="keyword">self</span>, spider)</span></span><span class="symbol">:</span></div><div class="line">        spider.logger.info(<span class="string">'Spider opened: %s'</span> % spider.name)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_set_proxy</span><span class="params">(<span class="keyword">self</span>, request, scheme)</span></span><span class="symbol">:</span></div><div class="line">        <span class="comment"># 随机选择一个代理</span></div><div class="line">        creds, proxy = random.choice(<span class="keyword">self</span>.proxies[scheme])</div><div class="line">        request.meta[<span class="string">'proxy'</span>] = proxy</div><div class="line">        <span class="keyword">if</span> <span class="symbol">creds:</span></div><div class="line">            request.headers[<span class="string">'Proxy-Authorization'</span>] = b<span class="string">'Basic'</span> + creds</div></pre></td></tr></table></figure></p>
+<h3 id="不足之处"><a href="#不足之处" class="headerlink" title="不足之处"></a>不足之处</h3><ul>
+<li>数据量非常大，大概有10w多条，由于使用没有进行分布式处理也没有挂在服务器上跑，导致电脑被占用了一个下午，心痛。</li>
+<li>随机代理无法自动删除无效代理，无法重新下载失败链接，导致失败链接丢失，影响下载质量。</li>
+<li>豆瓣页面明明写的20本书！但是部分页面实际只有19本！骗子！过分！！哼！！！</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;class DoubannovelSpiderMiddleware(HttpProxyMiddleware):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Not all methods need to be defined. If a method is not defined,
-
+      &lt;p&gt;想了想决定，把想要爬的网站都汇总起来，一方面是这样更方便清晰，另一方面也是督促自己每天都编程。&lt;/p&gt;
+&lt;p&gt;完成后会顺带写上关键点和一些心得。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;先定个小目标，爬他100个&lt;/em&gt;&lt;br&gt;
     
     </summary>
     
+      <category term="Code" scheme="http://puppetkant.cn/categories/Code/"/>
+    
+    
+      <category term="Python" scheme="http://puppetkant.cn/tags/Python/"/>
     
   </entry>
   
