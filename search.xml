@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[《think_python》读书笔记]]></title>
       <url>http://puppetkant.cn/2017/12/05/%E3%80%8Athink-python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-      <content type="html"><![CDATA[<h2 id="程序之道"><a href="#程序之道" class="headerlink" title="程序之道"></a>程序之道</h2><ul>
+      <content type="html"><![CDATA[<p>最近在图书馆发现了一本书《Think Python:How to Think Like a Computer Scientist》，看起来还不错的样子，于是就拿来看了，是一本蛮适合入门Python的书，还能查漏补缺，个人还是蛮推荐的。可以尝试看完廖雪峰的python教程然后看这本。<br><a id="more"></a></p>
+<h2 id="程序之道"><a href="#程序之道" class="headerlink" title="程序之道"></a>程序之道</h2><ul>
 <li>操作符**表示进行指数运算。<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="number">6</span>**<span class="number">2</span>+<span class="number">6</span></div><div class="line"><span class="number">42</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
