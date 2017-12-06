@@ -61,7 +61,7 @@
 <li>收集关键词参数</li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def <span class="builtin-name">print</span>(<span class="number">*a</span>rgs):</div><div class="line">    <span class="builtin-name">print</span>(args)</div></pre></td></tr></table></figure>
-<p><em>号操作符并不会收集关键词实参，要收集关键词实参，采用*</em>操作符：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printall</span><span class="params">(*args,**kwargs)</span>:</span></div><div class="line">    print(args+kwargs)</div></pre></td></tr></table></figure></p>
+<p>星号操作符并不会收集关键词实参，要收集关键词实参，采用**操作符：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printall</span><span class="params">(*args,**kwargs)</span>:</span></div><div class="line">    print(args+kwargs)</div></pre></td></tr></table></figure></p>
 <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2>]]></content>
       
         <categories>
