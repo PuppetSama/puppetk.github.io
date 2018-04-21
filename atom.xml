@@ -66,6 +66,8 @@
 <h2 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h2><p>好吧，哪怕2017再昏暗日子还是要过下去的，如果人生就这样结束我是不会接受的。</p>
 <blockquote>
 <p>可悲的你究竟要活到什么时候？</p>
+</blockquote>
+<blockquote>
 <p>直到我庞大的未来，将我庞大的过去粉碎为止。</p>
 </blockquote>
 <p>那么来历数一下接下来要做些什么吧，卑微的怪物还在奢求着什么。</p>
@@ -282,6 +284,8 @@
 <h3 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h3><p>除了以上所说的Selenium方式，还有Splash、PyV8、Ghost、execjs等，用法大同小异，只是写法有差异而已，参考查阅官方文档都可以简单应有，这里就不过多复述了。</p>
 <h2 id="动态页面逆向分析爬取"><a href="#动态页面逆向分析爬取" class="headerlink" title="动态页面逆向分析爬取"></a>动态页面逆向分析爬取</h2><blockquote>
 <p>任何动态产生的内容，要么是本地计算，要么是从服务器获取的。</p>
+</blockquote>
+<blockquote>
 <p>前者看js，后者抓包。</p>
 </blockquote>
 <p>爬虫爬取动态页面效率最高的是分析出请求数据的URL<del>熟练运用F12便可以解决</del>，在这里推荐一下网站分析工具<a href="https://www.charlesproxy.com/" target="_blank" rel="external">Charles</a>。</p>
