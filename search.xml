@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[浅析k近邻算法]]></title>
       <url>http://puppetkant.cn/2018/04/21/%E6%B5%85%E6%9E%90k%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</url>
-      <content type="html"><![CDATA[<p>数据挖掘十大算法之k近邻算法。</p>
+      <content type="html"><![CDATA[<p>数据挖掘十大算法之k近邻算法。(持续更新中，<del>等我把公式打上去</del>)</p>
 <a id="more"></a>
 <h2 id="k近邻简述"><a href="#k近邻简述" class="headerlink" title="k近邻简述"></a>k近邻简述</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>简单地说，k近邻算法采用测量不同特征值之间的距离的方法进行预测。</p>
 <h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><p>给定测试样本，基于某种距离量度找出训练集中与其最靠近的k个训练样本，然后基于这k个“邻居”的信息来进行预测。<del>（近朱者赤，近墨者黑）</del></p>
