@@ -3,6 +3,7 @@
 <a id="more"></a>
 <h2 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h2><p>正则表达式是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符。模式描述在搜索文本时要匹配的一个或多个字符串。</p>
 <h3 id="正则表达式修饰符-可选标志"><a href="#正则表达式修饰符-可选标志" class="headerlink" title="正则表达式修饰符 - 可选标志"></a>正则表达式修饰符 - 可选标志</h3><p>正则表达式可以包含一些可选标志修饰符来控制匹配的模式。修饰符被指定为一个可选的标志。多个标志可以通过按位 OR(|) 它们来指定。如 re.I | re.M 被设置成 I 和 M 标志：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -37,6 +38,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h3><p>模式字符串使用特殊的语法来表示一个正则表达式：</p>
 <p>字母和数字表示他们自身。一个正则表达式模式中的字母和数字匹配同样的字符串。</p>
 <p>多数字母和数字前加一个反斜杠时会拥有不同的含义。</p>
@@ -44,6 +46,7 @@
 <p>反斜杠本身需要使用反斜杠转义。</p>
 <p>由于正则表达式通常都包含反斜杠，所以你最好使用原始字符串来表示它们。模式元素(如 r’/t’，等价于’//t’)匹配相应的特殊字符。</p>
 <p>下表列出了正则表达式模式语法中的特殊元素。如果你使用模式的同时提供了可选的标志参数，某些模式元素的含义会改变。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -69,8 +72,8 @@
 <td>用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
 </tr>
 <tr>
-<td>[^…]</td>
-<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
+<td><sup><a href="#fn_..." id="reffn_...">...</a></sup></td>
+<td>不在[]中的字符：<sup><a href="#fn_abc" id="reffn_abc">abc</a></sup> 匹配除了a,b,c之外的字符。</td>
 </tr>
 <tr>
 <td>re*</td>
@@ -202,10 +205,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="常用的正则表达式处理函数"><a href="#常用的正则表达式处理函数" class="headerlink" title="常用的正则表达式处理函数"></a>常用的正则表达式处理函数</h2><h3 id="re-match"><a href="#re-match" class="headerlink" title="re.match"></a>re.match</h3><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
 <p><strong>函数语法：</strong></p>
 <pre><code>re.match(pattern, string, flags=0)
 </code></pre><p>函数参数说明：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -228,6 +233,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>匹配成功re.match方法返回一个匹配的对象，否则返回None。</p>
 <p>实例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">name=<span class="string">"Hello,My name is kuangl,nice to meet you..."</span></div><div class="line">k=re.match(<span class="string">r"(\H....)"</span>,name)</div><div class="line"><span class="keyword">if</span> k:</div><div class="line">     <span class="keyword">print</span> k.group(<span class="number">0</span>),<span class="string">'\n'</span>,k.group(<span class="number">1</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"Sorry,not match!"</span></div></pre></td></tr></table></figure>
@@ -257,6 +263,7 @@
 <p><strong>函数语法：</strong></p>
 <pre><code>re.sub(pattern, repl, string, count=0)
 </code></pre><p>函数参数说明：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -283,6 +290,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>替换成功re.sub方法返回一个替换后的对象，否则返回原字符串。</p>
 <p>实例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">phone = <span class="string">"2004-959-559 # 这是一个国外电话号码"</span></div><div class="line"></div><div class="line">num = re.sub(<span class="string">r'#.*$'</span>, <span class="string">""</span>, phone)</div><div class="line"><span class="keyword">print</span> <span class="string">"电话号码是: "</span>, num</div><div class="line"></div><div class="line">num = re.sub(<span class="string">r'\D'</span>, <span class="string">""</span>, phone)</div><div class="line"><span class="keyword">print</span> <span class="string">"电话号码是 : "</span>, num</div><div class="line"></div><div class="line">num = re.sub(<span class="string">r'3'</span>, <span class="string">""</span>, phone)</div><div class="line"><span class="keyword">print</span> <span class="string">"电话号码是 : "</span>, num</div></pre></td></tr></table></figure>
@@ -292,6 +300,7 @@
 <p><strong>函数语法：</strong></p>
 <pre><code>re.split(pattern, string, maxsplit=0)
 </code></pre><p>函数参数说明：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -314,6 +323,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>分割成功re.split方法返回一个分割后的对象组成的列表，否则返回由原字符串组成的列表。</p>
 <p>实例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">test=<span class="string">"Hi, nice to meet you where are you from?"</span></div><div class="line"></div><div class="line">a = re.split(<span class="string">r"\s+"</span>,test)</div><div class="line">print(a)</div><div class="line"></div><div class="line">a = re.split(<span class="string">r"\s+"</span>,test,<span class="number">3</span>)</div><div class="line">print(a)</div><div class="line"></div><div class="line">a = re.split(<span class="string">r"|"</span>,test,<span class="number">3</span>)</div><div class="line">print(a)</div></pre></td></tr></table></figure>
@@ -323,6 +333,7 @@
 <p><strong>函数语法：</strong></p>
 <pre><code>re.compile(pattern, flags=0)
 </code></pre><p>函数参数说明：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -341,9 +352,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>re.compile方法返回一个正则对象。</p>
 <p>实例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">test=<span class="string">"Hi, nice to meet you where are you from?"</span></div><div class="line">k=re.compile(<span class="string">r'\w*o\w*'</span>) <span class="comment">#匹配带o的字符串</span></div><div class="line"><span class="keyword">print</span> k.findall(test)     <span class="comment">#显示所有包涵o的字符串</span></div><div class="line"><span class="keyword">print</span> k.sub(<span class="keyword">lambda</span> m: <span class="string">'['</span> + m.group(<span class="number">0</span>) + <span class="string">']'</span>,test)  <span class="comment"># 将字符串中含有o的单词用[]括起来</span></div></pre></td></tr></table></figure>
 <p>以上实例执行结果如下：</p>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'to'</span>, <span class="string">'you'</span>, <span class="string">'you'</span>, <span class="string">'from'</span>]</div><div class="line"><span class="symbol">Hi</span>, nice [to] meet [you] where are [you] [from]?</div></pre></td></tr></table></figure>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://puppetkant.cn/2017/04/09/Python-爬虫笔记（一）————正则表达式/" data-id="cjg9hzgra0005p4udttztg8ww" class="article-share-link">分享</a><div class="tags"><a href="/tags/Python/">Python</a></div><div class="post-nav"><a href="/2017/04/11/Python-爬虫笔记（二）——编码转换与错误处理/" class="pre">Python 爬虫笔记（二）——编码转换与错误处理</a><a href="/2017/03/19/Android爬坑问题集合/" class="next">Android爬坑问题集合</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://puppetkant.cn"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/mc/" style="font-size: 15px;">mc</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Others/" style="font-size: 15px;">Others</a> <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/21/浅析k近邻算法/">浅析k近邻算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/01/假装很开心/">假装很开心</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/《think-python》读书笔记/">《think_python》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/26/目标爬虫清单/">目标爬虫清单</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/20/Python动态爬取的两种方式/">Python动态爬取的两种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/19/数字杭电模拟登录/">数字杭电模拟登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/07/Python爬坑问题集合/">Python爬坑问题集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/国内携程一日航线Python实现/">国内携程一日航线Python实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/28/思考的独立性/">思考的独立性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/09/Python-爬虫笔记（三）——对于Lambda的认识/">Python 爬虫笔记（三）——对于Lambda的认识</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://mikumiku.com.cn/" title="Xana's blog" target="_blank">Xana's blog</a><ul></ul><a href="http://fogdong.github.io/" title="FogDong's blog" target="_blank">FogDong's blog</a><ul></ul><a href="http://yorhp.com/" title="Tyhj's blog" target="_blank">Tyhj's blog</a><ul></ul><a href="https://tecotaku.cn/" title="Sino's blog" target="_blank">Sino's blog</a><ul></ul><a href="http://hellovass.info/" title="HelloVass's blog" target="_blank">HelloVass's blog</a><ul></ul><a href="http://qingmicity.cn/" title="QingMi's blog" target="_blank">QingMi's blog</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">PuppetHut.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://puppetkant.cn/2017/04/09/Python-爬虫笔记（一）————正则表达式/" data-id="cjg9iaznd0005v0udffht9blr" class="article-share-link">分享</a><div class="tags"><a href="/tags/Python/">Python</a></div><div class="post-nav"><a href="/2017/04/11/Python-爬虫笔记（二）——编码转换与错误处理/" class="pre">Python 爬虫笔记（二）——编码转换与错误处理</a><a href="/2017/03/19/Android爬坑问题集合/" class="next">Android爬坑问题集合</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://puppetkant.cn"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Read/">Read</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/mc/" style="font-size: 15px;">mc</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Others/" style="font-size: 15px;">Others</a> <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/21/浅析k近邻算法/">浅析k近邻算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/01/假装很开心/">假装很开心</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/05/《think-python》读书笔记/">《think_python》读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/26/目标爬虫清单/">目标爬虫清单</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/20/Python动态爬取的两种方式/">Python动态爬取的两种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/19/数字杭电模拟登录/">数字杭电模拟登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/07/Python爬坑问题集合/">Python爬坑问题集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/国内携程一日航线Python实现/">国内携程一日航线Python实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/28/思考的独立性/">思考的独立性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/09/Python-爬虫笔记（三）——对于Lambda的认识/">Python 爬虫笔记（三）——对于Lambda的认识</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://mikumiku.com.cn/" title="Xana's blog" target="_blank">Xana's blog</a><ul></ul><a href="http://fogdong.github.io/" title="FogDong's blog" target="_blank">FogDong's blog</a><ul></ul><a href="http://yorhp.com/" title="Tyhj's blog" target="_blank">Tyhj's blog</a><ul></ul><a href="https://tecotaku.cn/" title="Sino's blog" target="_blank">Sino's blog</a><ul></ul><a href="http://hellovass.info/" title="HelloVass's blog" target="_blank">HelloVass's blog</a><ul></ul><a href="http://qingmicity.cn/" title="QingMi's blog" target="_blank">QingMi's blog</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">PuppetHut.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
