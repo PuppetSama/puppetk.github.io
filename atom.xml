@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2018-04-22T02:27:04.151Z</updated>
+  <updated>2018-04-22T02:29:59.599Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://puppetkant.cn/2018/04/21/%E6%B5%85%E6%9E%90k%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/"/>
     <id>http://puppetkant.cn/2018/04/21/浅析k近邻算法/</id>
     <published>2018-04-21T08:45:07.000Z</published>
-    <updated>2018-04-22T02:27:04.151Z</updated>
+    <updated>2018-04-22T02:29:59.599Z</updated>
     
     <content type="html"><![CDATA[<p>数据挖掘十大算法之k近邻算法。(持续更新中，<del>等我把公式打上去</del>)</p>
 <a id="more"></a>
@@ -41,8 +41,8 @@
 <h3 id="决策分类规则"><a href="#决策分类规则" class="headerlink" title="决策分类规则"></a>决策分类规则</h3><p>k近邻中的分类决策往往是多数表决。</p>
 <p>多数表决规则有以下解释：如果分类的损失函数为0-1损失函数，分类函数为</p>
 <script type="math/tex; mode=display">f:R^{n}\rightarrow \left\{ c_{1},c_{2},\ldots ,c_{k}\right\}</script><p>那么误分类的概率是：</p>
-<script type="math/tex; mode=display">P\left( Y\neq f\left( x\right) \right) =1-P\left( Y= f\left( x\right) \right)</script><p>对给定的实例$x \in \chi$，其最近邻的k个训练实例点构成集合$N<em>{k}\left( x\right)$，如果涵盖$N</em>{k}\left( x\right)$的区域的类别是$c_{j}$，那么误分类率是</p>
-<script type="math/tex; mode=display">\dfrac {1}{k}\sum _{x_{i}\in N_{k}\left( x\right) }I\left( y_{i}\neq c_{j}\right) = 1 - dfrac {1}{k}\sum _{x_{i}\in N_{k}\left( x\right) }I\left( y_{i}= c_{j}\right)</script><p>要使误分类率最小即经验风险最小，就要使$\sum <em>{x</em>{i}\in N<em>{k}\left( x\right) }I\left( y</em>{i}= c_{j}\right)$最大，所以多数表决规则等价于经验风险最小化。</p>
+<script type="math/tex; mode=display">P\left( Y\neq f\left( x\right) \right) =1-P\left( Y= f\left( x\right) \right)</script><p>对给定的实例$x \in \chi$，其最近邻的k个训练实例点构成集合$N_{k}\left( x\right)$，如果涵盖$N_{k}\left( x\right)$的区域的类别是$c_{j}$，那么误分类率是</p>
+<script type="math/tex; mode=display">\dfrac {1}{k}\sum _{x_{i}\in N_{k}\left( x\right) }I\left( y_{i}\neq c_{j}\right) = 1 - dfrac {1}{k}\sum _{x_{i}\in N_{k}\left( x\right) }I\left( y_{i}= c_{j}\right)</script><p>要使误分类率最小即经验风险最小，就要使$\sum _{x_{i}\in N_{k}\left( x\right) }I\left( y_{i}= c_{j}\right)$最大，所以多数表决规则等价于经验风险最小化。</p>
 <h2 id="k近邻实现"><a href="#k近邻实现" class="headerlink" title="k近邻实现"></a>k近邻实现</h2><p>kNN的一大缺点需要存储全部训练样本，以及繁重的距离计算量。</p>
 <p>改进的方案有两个</p>
 <ul>
