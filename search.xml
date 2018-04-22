@@ -18,7 +18,7 @@
 <script type="math/tex; mode=display">L_{p}\left( x_{i},x_{j}\right)=\left( \sum ^{n}_{l=1}\left| x^{\left( l\right) }_{i}-x^{\left( l\right) }_{j}\right| ^{p}\right) ^{\dfrac {1}{p}}</script><p>当p=2时，称为欧氏距离(Euclidean distance)，即</p>
 <script type="math/tex; mode=display">L_{2}\left( x_{i},x_{j}\right)=\left( \sum ^{n}_{l=1}\left| x^{\left( l\right) }_{i}-x^{\left( l\right) }_{j}\right| ^{2}\right) ^{\dfrac {1}{2}}</script><p>当p=1时，称为曼哈顿距离，即</p>
 <script type="math/tex; mode=display">L_{1}\left( x_{i},x_{j}\right)=\sum ^{n}_{l=1}\left| x^{\left( l\right) }_{i}-x^{\left( l\right) }_{j}\right|</script><p>当p=$\infty$时，它是各个坐标距离的最大值，即</p>
-<script type="math/tex; mode=display">L_{\infty}\left( x_{i},x_{j}\right)=\max _{l}\left| x^{\left( l\right) }_{i}-x^{\left( l\right) }_{j}\right|</script><p>p取不同值是与原点$L_{p}$距离为1的点的图形</p>
+<script type="math/tex; mode=display">L_{\infty}\left( x_{i},x_{j}\right)=\max _{l}\left| x^{\left( l\right) }_{i}-x^{\left( l\right) }_{j}\right|</script><p>p取不同值时与原点$L_{p}$距离为1的点的图形<br><img src="http://omjz7so35.bkt.clouddn.com/Lpdistance1208874-20171025071155848-1477111731.png" alt=""></p>
 ]]></content>
       
         <categories>
