@@ -24,7 +24,7 @@
 <li>计算$P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)$。</li>
 <li>如果$P\left( y_{k}| x\right)=max{P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)}$，则$x\in y_{k}$。</li>
 </ol>
-<p>令$D<em>{c}$表示训练集D中第c类样本组成的集合，若有充分的独立同分布样本，则可容易地估计出类先验概率$$P\left( c\right) =\dfrac {\left| D</em>{c}\right| }{\left| D\right| }$$</p>
+<p>令$D_{c}$表示训练集D中第c类样本组成的集合，若有充分的独立同分布样本，则可容易地估计出类先验概率<script type="math/tex">P\left( c\right) =\dfrac {\left| D_{c}\right| }{\left| D\right| }</script></p>
 <p>对于离散属性而言，令———表示———中在第i个属性上取值为——的样本组成的集合，则条件概率——可估计为$$$$<br>对于连续属性可考虑概率密度函数，假定————，其中——和——分别是第c类样本在第i个属性上取值的均值和方差，则有$$$$</p>
 <h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><h2 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h2><p>为了避免其他属性携带的信息被训练集中未出现的属性值“抹去”，在估计概率值的时通常要进行“平滑”(smoothing)。常用“拉普拉斯修正”(Laplacian correction)。具体来说，另N表示训练集D中可能的类别数，$N_{i}$表示第i个属性可能的取值数，则可修正为$$$$ $$$$</p>
 <p>显然，拉普拉斯修正避免了因训练集样本不充分而导致概率估值为零的问题，并且在训练集变大时，修正过程所引入的先验的影响也会逐渐变得可忽略，使得估值渐趋向于实际概率值。</p>
