@@ -16,7 +16,7 @@
 <h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p>基于贝叶斯公式来估计后验概率P(Y|X)的主要困难在于：类条件概率P(X|Y)是所有属性的联合概率，难以从有限的训练样本中直接估计而得。为避开这个障碍，朴素贝叶斯分类器采用了“属性条件独立性假设”：对所有已知类别，假设所有属性独立。</p>
 <p>基于属性条件独立性假设，可以得到：</p>
 <script type="math/tex; mode=display">P\left( Y| X\right)\dfrac {p\left( y\right) p\left( x|y\right) }{p\left( x\right) }=\dfrac {p\left( y\right) }{p\left( x\right) }\prod ^{d}_{i=i}P\left( x_{i}| y\right)</script><p>由于对于所以类别来讲P(x)相同，因此贝叶斯判定准则为</p>
-<script type="math/tex; mode=display">h_{nb}\left( x\right) =argmax_{c\in y}p\left( x\right) \prod ^{d}_{i=1}p\left( x_{i}\right)</script><p>这就是贝叶斯分类器的表达式。</p>
+<script type="math/tex; mode=display">h_{nb}\left( x\right) =argmax_{c\in y}p\left( x\right) \prod ^{d}_{i=1}p\left( x_{i}|c\right)</script><p>这就是贝叶斯分类器的表达式。</p>
 <p>朴素贝叶斯分类的正式定义如下：</p>
 <ol>
 <li>设$x={ a_{1},a_{2},\ldots ,a_{m}}$为一个待分类项，而每个a为x的一个特征属性。</li>
