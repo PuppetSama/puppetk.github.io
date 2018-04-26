@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2018-04-26T00:45:46.183Z</updated>
+  <updated>2018-04-26T01:05:43.838Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://puppetkant.cn/2018/04/22/%E6%B5%85%E6%9E%90%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95/"/>
     <id>http://puppetkant.cn/2018/04/22/浅析朴素贝叶斯算法/</id>
     <published>2018-04-22T08:35:35.000Z</published>
-    <updated>2018-04-26T00:45:46.183Z</updated>
+    <updated>2018-04-26T01:05:43.838Z</updated>
     
     <content type="html"><![CDATA[<p>数据挖掘十大算法之朴素贝叶斯算法。</p>
 <a id="more"></a>
@@ -35,12 +35,16 @@
 <script type="math/tex; mode=display">h_{nb}\left( x\right) =argmax_{c\in y}p\left( x\right) \prod ^{d}_{i=1}p\left( x_{i}\right)</script><p>这就是贝叶斯分类器的表达式。</p>
 <p>朴素贝叶斯分类的正式定义如下：</p>
 <ol>
-<li>设$x=\left{ a<em>{1},a</em>{2},\ldots ,a_{m}\right}$为一个待分类项，而每个a为x的一个特征属性。</li>
-<li>有类别集合$C=\left{ y<em>{1},y</em>{2},\ldots ,y_{n}\right}$。</li>
-<li>计算$P\left( y<em>{1}| x\right),P\left( y</em>{2}| x\right),…,P\left( y_{n}| x\right)$。</li>
-<li>如果$P\left( y<em>{k}| x\right)=max\left{P\left( y</em>{1}| x\right),P\left( y<em>{2}| x\right),…,P\left( y</em>{n}| x\right)\right}$，则$x\in y_{k}$。</li>
+<li>设$x=\left{ a_{1},a_{2},\ldots ,a_{m}\right}$为一个待分类项，而每个a为x的一个特征属性。</li>
+<li>有类别集合$C=\left{ y_{1},y_{2},\ldots ,y_{n}\right}$。</li>
+<li>计算$P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)$。</li>
+<li>如果$P\left( y_{k}| x\right)=max\left{P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)\right}$，则$x\in y_{k}$。</li>
 </ol>
-<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><h2 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h2><h2 id="半贝叶斯分类"><a href="#半贝叶斯分类" class="headerlink" title="半贝叶斯分类"></a>半贝叶斯分类</h2><h2 id="贝叶斯信念网"><a href="#贝叶斯信念网" class="headerlink" title="贝叶斯信念网"></a>贝叶斯信念网</h2><p>参考：</p>
+<p>令$D<em>{c}$表示训练集D中第c类样本组成的集合，若有充分的独立同分布样本，则可容易地估计出类先验概率$$P\left( c\right) =\dfrac {\left| D</em>{c}\right| }{\left| D\right| }$$</p>
+<p>对于离散属性而言，令———表示———中在第i个属性上取值为——的样本组成的集合，则条件概率——可估计为$$$$<br>对于连续属性可考虑概率密度函数，假定————，其中——和——分别是第c类样本在第i个属性上取值的均值和方差，则有$$$$</p>
+<h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><h2 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h2><p>为了避免其他属性携带的信息被训练集中未出现的属性值“抹去”，在估计概率值的时通常要进行“平滑”(smoothing)。常用“拉普拉斯修正”(Laplacian correction)。具体来说，另N表示训练集D中可能的类别数，$N_{i}$表示第i个属性可能的取值数，则可修正为$$$$ $$$$</p>
+<p>显然，拉普拉斯修正避免了因训练集样本不充分而导致概率估值为零的问题，并且在训练集变大时，修正过程所引入的先验的影响也会逐渐变得可忽略，使得估值渐趋向于实际概率值。</p>
+<h2 id="半贝叶斯分类"><a href="#半贝叶斯分类" class="headerlink" title="半贝叶斯分类"></a>半贝叶斯分类</h2><h2 id="贝叶斯信念网"><a href="#贝叶斯信念网" class="headerlink" title="贝叶斯信念网"></a>贝叶斯信念网</h2><p>参考：</p>
 <blockquote>
 </blockquote>
 ]]></content>
