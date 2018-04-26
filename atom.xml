@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2018-04-26T01:38:49.024Z</updated>
+  <updated>2018-04-26T01:42:56.842Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <link href="http://puppetkant.cn/2018/04/22/%E6%B5%85%E6%9E%90%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95/"/>
     <id>http://puppetkant.cn/2018/04/22/浅析朴素贝叶斯算法/</id>
     <published>2018-04-22T08:35:35.000Z</published>
-    <updated>2018-04-26T01:38:49.024Z</updated>
+    <updated>2018-04-26T01:42:56.842Z</updated>
     
     <content type="html"><![CDATA[<p>数据挖掘十大算法之朴素贝叶斯算法。</p>
 <a id="more"></a>
 <h2 id="贝叶斯决策论"><a href="#贝叶斯决策论" class="headerlink" title="贝叶斯决策论"></a>贝叶斯决策论</h2><p>贝叶斯决策论是<strong>概率</strong>框架下实施决策的基本方法。对分类来说，在所有相关概率都已知的理想情况下，贝叶斯决策论考虑<strong>如何基于这些概率和误判损失来选择最优的类别标记</strong>。</p>
 <h2 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h2><p>假设X，Y是一对随机变量，他们的联合概率P(X=x,Y=y)是指X取值x且Y取值y的概率，条件概率是指一随机变量在另一随机变量取值已知的情况下取某一特征值的概率。X和Y的联合概率和条件概率满足如下关系：</p>
-<p>P(X,Y) = P(Y|X)*P(X)=P(X|Y)P(Y)</p>
+<p>P(X,Y) = P(Y|X)P(X)=P(X|Y)P(Y)</p>
 <p>调整该公式得到如下公式，称为贝叶斯定理：</p>
-<p>P(Y|X)=P(X|Y)P(Y)/P(X)</p>
+<p>$P(Y|X)=\dfrac {P(X|Y)P(Y)}{P(X)}$</p>
 <h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p>基于贝叶斯公式来估计后验概率P(Y|X)的主要困难在于：类条件概率P(X|Y)是所有属性的联合概率，难以从有限的训练样本中直接估计而得。为避开这个障碍，朴素贝叶斯分类器采用了“属性条件独立性假设”：对所有已知类别，假设所有属性独立。</p>
 <p>基于属性条件独立性假设，可以得到：</p>
 <script type="math/tex; mode=display">P\left( Y| X\right)\dfrac {p\left( y\right) p\left( x|y\right) }{p\left( x\right) }=\dfrac {p\left( y\right) }{p\left( x\right) }\prod ^{d}_{i=i}P\left( x_{i}| y\right)</script><p>由于对于所以类别来讲P(x)相同，因此贝叶斯判定准则为</p>
@@ -42,7 +42,7 @@
 </ol>
 <p>令$D_{c}$表示训练集D中第c类样本组成的集合，若有充分的独立同分布样本，则可容易地估计出类先验概率</p>
 <script type="math/tex; mode=display">P\left( c\right) =\dfrac {\left| D_{c}\right| }{\left| D\right| }</script><p>对于离散属性而言，令$D_{c,x_{i}}$表示$D_{c}$中在第i个属性上取值为$x_{i}$的样本组成的集合，则条件概率$P\left( x_{i}| c\right)$可估计为</p>
-<script type="math/tex; mode=display">P\left( x_{i}| c\right)=\dfrac {\left| D_{c,x_{i}}\right| }{\left| D\right| }</script><p>对于连续属性可考虑概率密度函数，假定$P\left( x_{i}| c\right)~\mathcal N\left( \mu _{c,i},\sigma ^{2}_{c,i}\right)$，其中$\mu _{c,i}$和$\sigma ^{2}_{c,i}$分别是第c类样本在第i个属性上取值的均值和方差，则有</p>
+<script type="math/tex; mode=display">P\left( x_{i}| c\right)=\dfrac {\left| D_{c,x_{i}}\right| }{\left| D\right| }</script><p>对于连续属性可考虑概率密度函数，假定$P\left( x_{i}| c\right)\sim\mathcal N\left( \mu _{c,i},\sigma ^{2}_{c,i}\right)$，其中$\mu _{c,i}$和$\sigma ^{2}_{c,i}$分别是第c类样本在第i个属性上取值的均值和方差，则有</p>
 <script type="math/tex; mode=display">p\left( x_{i}| c\right)=\dfrac {1}{\sqrt {2\pi }\sigma _{c, i}}\exp \left( -\dfrac {\left( x_{i}-\mu _{c,i}\right) ^{2}}{2\sigma ^{2}_{c,i}}\right)</script><h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><h2 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h2><p>为了避免其他属性携带的信息被训练集中未出现的属性值“抹去”，在估计概率值的时通常要进行“平滑”(smoothing)。常用“拉普拉斯修正”(Laplacian correction)。具体来说，另N表示训练集D中可能的类别数，$N_{i}$表示第i个属性可能的取值数，则可修正为</p>
 <script type="math/tex; mode=display">\widehat {P}\left( c\right)=\dfrac {\left| D_{c}\right| +1}{\left| D\right| +N}</script><script type="math/tex; mode=display">\widehat {P}\left( x_{i}| c\right)=\dfrac {\left| D_{c, x_{i}}\right| +1}{\left| D_{c}\right| +N_{i}}</script><p>显然，拉普拉斯修正避免了因训练集样本不充分而导致概率估值为零的问题，并且在训练集变大时，修正过程所引入的先验的影响也会逐渐变得可忽略，使得估值渐趋向于实际概率值。</p>
 <h2 id="半贝叶斯分类"><a href="#半贝叶斯分类" class="headerlink" title="半贝叶斯分类"></a>半贝叶斯分类</h2><h2 id="贝叶斯信念网"><a href="#贝叶斯信念网" class="headerlink" title="贝叶斯信念网"></a>贝叶斯信念网</h2><p>参考：</p>
