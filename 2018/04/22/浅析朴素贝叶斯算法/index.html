@@ -12,9 +12,9 @@
 <p>朴素贝叶斯分类的正式定义如下：</p>
 <ol>
 <li>设$x={ a_{1},a_{2},\ldots ,a_{m}}$为一个待分类项，而每个a为x的一个特征属性。</li>
-<li>有类别集合$C=\left{ y_{1},y_{2},\ldots ,y_{n}\right}$。</li>
+<li>有类别集合$C={ y_{1},y_{2},\ldots ,y_{n}}$。</li>
 <li>计算$P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)$。</li>
-<li>如果$P\left( y_{k}| x\right)=max\left{P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)\right}$，则$x\in y_{k}$。</li>
+<li>如果$P\left( y_{k}| x\right)=max{P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)}$，则$x\in y_{k}$。</li>
 </ol>
 <p>令$D<em>{c}$表示训练集D中第c类样本组成的集合，若有充分的独立同分布样本，则可容易地估计出类先验概率$$P\left( c\right) =\dfrac {\left| D</em>{c}\right| }{\left| D\right| }$$</p>
 <p>对于离散属性而言，令———表示———中在第i个属性上取值为——的样本组成的集合，则条件概率——可估计为$$$$<br>对于连续属性可考虑概率密度函数，假定————，其中——和——分别是第c类样本在第i个属性上取值的均值和方差，则有$$$$</p>

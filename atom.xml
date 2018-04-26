@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2018-04-26T01:13:34.002Z</updated>
+  <updated>2018-04-26T01:15:17.347Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://puppetkant.cn/2018/04/22/%E6%B5%85%E6%9E%90%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95/"/>
     <id>http://puppetkant.cn/2018/04/22/浅析朴素贝叶斯算法/</id>
     <published>2018-04-22T08:35:35.000Z</published>
-    <updated>2018-04-26T01:13:34.002Z</updated>
+    <updated>2018-04-26T01:15:17.347Z</updated>
     
     <content type="html"><![CDATA[<p>数据挖掘十大算法之朴素贝叶斯算法。</p>
 <a id="more"></a>
@@ -36,9 +36,9 @@
 <p>朴素贝叶斯分类的正式定义如下：</p>
 <ol>
 <li>设$x={ a_{1},a_{2},\ldots ,a_{m}}$为一个待分类项，而每个a为x的一个特征属性。</li>
-<li>有类别集合$C=\left{ y_{1},y_{2},\ldots ,y_{n}\right}$。</li>
+<li>有类别集合$C={ y_{1},y_{2},\ldots ,y_{n}}$。</li>
 <li>计算$P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)$。</li>
-<li>如果$P\left( y_{k}| x\right)=max\left{P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)\right}$，则$x\in y_{k}$。</li>
+<li>如果$P\left( y_{k}| x\right)=max{P\left( y_{1}| x\right),P\left( y_{2}| x\right),…,P\left( y_{n}| x\right)}$，则$x\in y_{k}$。</li>
 </ol>
 <p>令$D<em>{c}$表示训练集D中第c类样本组成的集合，若有充分的独立同分布样本，则可容易地估计出类先验概率$$P\left( c\right) =\dfrac {\left| D</em>{c}\right| }{\left| D\right| }$$</p>
 <p>对于离散属性而言，令———表示———中在第i个属性上取值为——的样本组成的集合，则条件概率——可估计为$$$$<br>对于连续属性可考虑概率密度函数，假定————，其中——和——分别是第c类样本在第i个属性上取值的均值和方差，则有$$$$</p>
