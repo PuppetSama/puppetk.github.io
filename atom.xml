@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2018-04-26T01:05:43.838Z</updated>
+  <updated>2018-04-26T01:10:09.571Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://puppetkant.cn/2018/04/22/%E6%B5%85%E6%9E%90%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95/"/>
     <id>http://puppetkant.cn/2018/04/22/浅析朴素贝叶斯算法/</id>
     <published>2018-04-22T08:35:35.000Z</published>
-    <updated>2018-04-26T01:05:43.838Z</updated>
+    <updated>2018-04-26T01:10:09.571Z</updated>
     
     <content type="html"><![CDATA[<p>数据挖掘十大算法之朴素贝叶斯算法。</p>
 <a id="more"></a>
@@ -46,6 +46,7 @@
 <p>显然，拉普拉斯修正避免了因训练集样本不充分而导致概率估值为零的问题，并且在训练集变大时，修正过程所引入的先验的影响也会逐渐变得可忽略，使得估值渐趋向于实际概率值。</p>
 <h2 id="半贝叶斯分类"><a href="#半贝叶斯分类" class="headerlink" title="半贝叶斯分类"></a>半贝叶斯分类</h2><h2 id="贝叶斯信念网"><a href="#贝叶斯信念网" class="headerlink" title="贝叶斯信念网"></a>贝叶斯信念网</h2><p>参考：</p>
 <blockquote>
+<p><a href="http://blog.csdn.net/u011067360/article/details/22890465" target="_blank" rel="external">http://blog.csdn.net/u011067360/article/details/22890465</a></p>
 </blockquote>
 ]]></content>
     

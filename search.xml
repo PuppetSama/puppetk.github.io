@@ -30,6 +30,7 @@
 <p>显然，拉普拉斯修正避免了因训练集样本不充分而导致概率估值为零的问题，并且在训练集变大时，修正过程所引入的先验的影响也会逐渐变得可忽略，使得估值渐趋向于实际概率值。</p>
 <h2 id="半贝叶斯分类"><a href="#半贝叶斯分类" class="headerlink" title="半贝叶斯分类"></a>半贝叶斯分类</h2><h2 id="贝叶斯信念网"><a href="#贝叶斯信念网" class="headerlink" title="贝叶斯信念网"></a>贝叶斯信念网</h2><p>参考：</p>
 <blockquote>
+<p><a href="http://blog.csdn.net/u011067360/article/details/22890465" target="_blank" rel="external">http://blog.csdn.net/u011067360/article/details/22890465</a></p>
 </blockquote>
 ]]></content>
       
