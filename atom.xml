@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://puppetkant.cn/"/>
-  <updated>2018-04-30T01:41:37.757Z</updated>
+  <updated>2018-04-30T01:50:42.604Z</updated>
   <id>http://puppetkant.cn/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <link href="http://puppetkant.cn/2018/04/26/%E6%B5%85%E6%9E%90%E5%86%B3%E7%AD%96%E6%A0%91%E7%AE%97%E6%B3%95/"/>
     <id>http://puppetkant.cn/2018/04/26/浅析决策树算法/</id>
     <published>2018-04-26T07:44:19.000Z</published>
-    <updated>2018-04-30T01:41:37.757Z</updated>
+    <updated>2018-04-30T01:50:42.604Z</updated>
     
     <content type="html"><![CDATA[<p>数据挖掘十大算法之C4.5以及CART算法。</p>
 <a id="more"></a>
 <h2 id="决策树的工作原理"><a href="#决策树的工作原理" class="headerlink" title="决策树的工作原理"></a>决策树的工作原理</h2><p>决策树是一类常见的机器学习方法。一般的，一个决策树包含一个根节点、若干个内部节点和若干个叶节点；叶节点对应于决策结果，其他每个节点则对应于一个属性测试；每个节点包含的样本集合根据属性测试的结果被划分到子节点中；根节点包含样本全集。从根节点到每个叶节点的路径对应了一个判定测试序列。<strong>决策树学习的目的是为了产生一棵泛化能力强，即处理未见示例能力强的决策树，其基本流程遵循简单且直观的“分而治之”(divide-and-conquer)策略。</strong><br><img src="http://omjz7so35.bkt.clouddn.com/decisiontreev2-39d109b46ea4f34d5efbf67edc11d57d_hd.jpg" alt="摘自《机器学习》周志华"></p>
 <h2 id="最佳度量选择"><a href="#最佳度量选择" class="headerlink" title="最佳度量选择"></a>最佳度量选择</h2><p>设p(i|t)表示给定节点t中属于类i的记录所占的比例，有时，我们省略节点t，直接用pi表示该比例。</p>
 <p>选择最佳划分的度量通常是根据划分后子女节点不纯性的程度。不纯的程度越低，类分布就越倾斜。例如，类分布为(0,1)的节点具有零不纯性，而均衡分布(0.5,0.5)的节点具有最高的不纯性。不纯性度量的例子包括：</p>
-<script type="math/tex; mode=display">Entropy\left( t\right) =-\sum ^{c-1}_{i=0}p\left( i|t\right)\log _{2}p\left( i|t\right)</script><script type="math/tex; mode=display">
-</script><p>其中c是类的个数，并且在计算熵时，$$。</p>
+<script type="math/tex; mode=display">Entropy\left( t\right) =-\sum ^{c-1}_{i=0}p\left( i|t\right)\log _{2}p\left( i|t\right)</script><script type="math/tex; mode=display">Gini(t)=1-\sum^{c-1}_{i=0}[p(i|t)]^{2}</script><p><script type="math/tex">$$
+其中c是类的个数，并且在计算熵时，</script>。</p>
 <h2 id="决策树归纳算法"><a href="#决策树归纳算法" class="headerlink" title="决策树归纳算法"></a>决策树归纳算法</h2><h2 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h2><h2 id="连续值与缺失值的处理"><a href="#连续值与缺失值的处理" class="headerlink" title="连续值与缺失值的处理"></a>连续值与缺失值的处理</h2><p>参考：</p>
 <blockquote>
 </blockquote>
